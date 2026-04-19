@@ -26,8 +26,8 @@ public class CategorieController {
     }
 
     @PutMapping("/{id}")
-    public CategorieDto updateCategorie(@RequestBody CategorieDto categorieDto){
-        return iCategorieService.updateCategorie(categorieDto);
+    public CategorieDto updateCategorie(@PathVariable Long id,@RequestBody CategorieDto categorieDto){
+        return iCategorieService.updateCategorie(id,categorieDto);
     }
 
     @DeleteMapping("/{id}")

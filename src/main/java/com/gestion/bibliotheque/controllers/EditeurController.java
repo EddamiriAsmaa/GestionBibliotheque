@@ -25,8 +25,8 @@ public class EditeurController {
     }
 
     @PutMapping("/{id}")
-    public EditeurDto updateEditeur(@RequestBody EditeurDto editeurDto){
-        return iEditeurService.updateEditeur(editeurDto);
+    public EditeurDto updateEditeur(@PathVariable Long id,@RequestBody EditeurDto editeurDto){
+        return iEditeurService.updateEditeur(id,editeurDto);
     }
 
     @DeleteMapping("/{id}")

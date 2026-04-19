@@ -2,6 +2,8 @@ package com.gestion.bibliotheque.services;
 
 import com.gestion.bibliotheque.dtos.CategorieDto;
 import com.gestion.bibliotheque.dtos.EditeurDto;
+import com.gestion.bibliotheque.entities.AuteurEntity;
+import com.gestion.bibliotheque.entities.CategorieEntity;
 import com.gestion.bibliotheque.mappers.CategorieMapper;
 import com.gestion.bibliotheque.repositories.CategorieRepository;
 import org.springframework.stereotype.Service;
@@ -26,8 +28,15 @@ public class CategorieService implements ICategorieService{
     }
 
     @Override
-    public CategorieDto updateCategorie(CategorieDto categorieDto) {
-        return categorieMapper.toDto(categorieRepository.save(categorieMapper.toEntity(categorieDto)));
+    public CategorieDto updateCategorie(Long id, CategorieDto categorieDto) {
+
+        CategorieEntity categorie = categorieRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Categorie not found"));
+
+        // mise à jour des champs
+        categorie.setNom(categorieDto.getNom());
+
+        return categorieMapper.toDto(categorieRepository.save(categorie));
     }
 
     @Override

@@ -25,7 +25,7 @@ public class LivreController {
 
     @PutMapping("/{id}")
     public LivreDto updateLivre(@PathVariable Long id, @RequestBody LivreDto livreDto){
-        return iLivreService.updateLivre(livreDto);
+        return iLivreService.updateLivre(id,livreDto);
     }
 
     @DeleteMapping("/{id}")

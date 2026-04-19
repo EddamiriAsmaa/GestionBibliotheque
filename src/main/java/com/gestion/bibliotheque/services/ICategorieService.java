@@ -8,7 +8,7 @@ public interface ICategorieService {
 
     CategorieDto addCategorie(CategorieDto categorieDto);
 
-    CategorieDto updateCategorie(CategorieDto categorieDto);
+    CategorieDto updateCategorie(Long id,CategorieDto categorieDto);
 
     void deleteCategorie(Long id);
 

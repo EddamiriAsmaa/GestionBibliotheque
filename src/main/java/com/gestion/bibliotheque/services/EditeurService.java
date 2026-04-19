@@ -1,6 +1,8 @@
 package com.gestion.bibliotheque.services;
 
 import com.gestion.bibliotheque.dtos.EditeurDto;
+import com.gestion.bibliotheque.entities.CategorieEntity;
+import com.gestion.bibliotheque.entities.EditeurEntity;
 import com.gestion.bibliotheque.mappers.EditeurMapper;
 import com.gestion.bibliotheque.repositories.EditeurRepository;
 import org.springframework.stereotype.Service;
@@ -26,8 +28,15 @@ public class EditeurService implements IEditeurService{
     }
 
     @Override
-    public EditeurDto updateEditeur(EditeurDto editeurDto) {
-        return editeurMapper.toDto(editeurRepository.save(editeurMapper.toEntity(editeurDto)));
+    public EditeurDto updateEditeur(Long id,EditeurDto editeurDto) {
+        EditeurEntity editeur = editeurRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Categorie not found"));
+
+        // mise à jour des champs
+        editeur.setNom(editeurDto.getNom());
+        editeur.setAddress(editeurDto.getAddress());
+
+        return editeurMapper.toDto(editeurRepository.save(editeur));
     }
 
     @Override

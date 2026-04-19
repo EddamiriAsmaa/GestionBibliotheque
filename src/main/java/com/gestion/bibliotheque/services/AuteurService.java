@@ -1,6 +1,7 @@
 package com.gestion.bibliotheque.services;
 
 import com.gestion.bibliotheque.dtos.AuteurDto;
+import com.gestion.bibliotheque.entities.AuteurEntity;
 import com.gestion.bibliotheque.mappers.AuteurMapper;
 import com.gestion.bibliotheque.repositories.AuteurRepository;
 import org.springframework.stereotype.Service;
@@ -26,8 +27,16 @@ public class AuteurService implements IAuteurService{
     }
 
     @Override
-    public AuteurDto updateAuteur(AuteurDto auteurDto) {
-        return auteurMapper.toDto(auteurRepository.save(auteurMapper.toEntity(auteurDto)));
+    public AuteurDto updateAuteur(Long id,AuteurDto auteurDto) {
+        AuteurEntity auteur = auteurRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Auteur not found"));
+
+        // mise à jour des champs
+        auteur.setNom(auteurDto.getNom());
+        auteur.setPrenom(auteurDto.getPrenom());
+        // ajoute les autres champs ici
+
+        return auteurMapper.toDto(auteurRepository.save(auteur));
     }
 
     @Override

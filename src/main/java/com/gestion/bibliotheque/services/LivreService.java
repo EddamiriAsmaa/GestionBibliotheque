@@ -36,6 +36,14 @@ public class LivreService implements ILivreService{
     @Override
     public LivreDto addLivre(LivreDto livreDto) {
 
+        if (livreDto.getAuteurId() == null){
+            throw new RuntimeException("ID auteur must not be null");
+        }else if( livreDto.getCategorieId() == null ){
+            throw new RuntimeException("IDcategorie must not be null");
+        }else if (livreDto.getEditeurId() == null ){
+            throw new RuntimeException("ID editeur must not be null");
+        }
+
         LivreEntity livre = livreMapper.toEntity(livreDto);
 
         livre.setAuteur(
@@ -57,10 +65,17 @@ public class LivreService implements ILivreService{
     }
 
     @Override
-    public LivreDto updateLivre(LivreDto livreDto) {
+    public LivreDto updateLivre(Long id, LivreDto livreDto) {
 
-        LivreEntity livre = livreMapper.toEntity(livreDto);
+        LivreEntity livre = livreRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Livre not found"));
 
+        // update simple champs
+        livre.setTitre(livreDto.getTitre());
+        livre.setPages(livreDto.getPages());
+        livre.setDatePublication(livreDto.getDatePublication());
+
+        // relations
         livre.setAuteur(
                 auteurRepository.findById(livreDto.getAuteurId())
                         .orElseThrow(() -> new RuntimeException("Auteur not found"))

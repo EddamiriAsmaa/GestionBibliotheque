@@ -7,7 +7,7 @@ import java.util.List;
 public interface ILivreService {
     LivreDto addLivre(LivreDto livreDto);
 
-    LivreDto updateLivre(LivreDto livreDto);
+    LivreDto updateLivre(Long id,LivreDto livreDto);
 
     void deleteLivre(Long id);
 

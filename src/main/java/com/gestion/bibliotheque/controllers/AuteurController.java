@@ -25,8 +25,8 @@ public class AuteurController {
     }
 
     @PutMapping("/{id}")
-    public AuteurDto updateAuteur(@RequestBody AuteurDto auteurDto){
-        return iAuteurService.updateAuteur(auteurDto);
+    public AuteurDto updateAuteur(@PathVariable Long id,@RequestBody AuteurDto auteurDto){
+        return iAuteurService.updateAuteur(id,auteurDto);
     }
 
     @DeleteMapping("/{id}")

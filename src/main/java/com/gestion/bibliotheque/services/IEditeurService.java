@@ -9,7 +9,7 @@ public interface IEditeurService {
 
     EditeurDto addEditeur(EditeurDto editeurDto);
 
-    EditeurDto updateEditeur(EditeurDto editeurDto);
+    EditeurDto updateEditeur(Long id,EditeurDto editeurDto);
 
     void deleteEditeur(Long id);
 
