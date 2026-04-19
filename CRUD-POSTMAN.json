@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "Gestion Bibliotheque API",
+    "_postman_id": "biblio-001",
+    "description": "CRUD API for Spring Boot Library Project",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auteur",
+      "item": [
+        {
+          "name": "Create Auteur",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Acteur 1\",\n  \"prenom\": \"Acteur 1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/Auteur",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["Auteur"]
+            }
+          }
+        },
+        {
+          "name": "Get All Auteurs",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/Auteur"
+          }
+        },
+        {
+          "name": "Get Auteur By Id",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/Auteur/1"
+          }
+        },
+        {
+          "name": "Update Auteur",
+          "request": {
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Updated\",\n  \"prenom\": \"Updated\"\n}"
+            },
+            "url": "http://localhost:8080/Auteur/1"
+          }
+        },
+        {
+          "name": "Delete Auteur",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/Auteur/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categorie",
+      "item": [
+        {
+          "name": "Create Categorie",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Informatique\"\n}"
+            },
+            "url": "http://localhost:8080/Categorie"
+          }
+        },
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/Categorie"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Editeur",
+      "item": [
+        {
+          "name": "Create Editeur",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"TechBooks\",\n  \"adresse\": \"Casablanca\"\n}"
+            },
+            "url": "http://localhost:8080/Editeur"
+          }
+        },
+        {
+          "name": "Get Editeurs",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/Editeur"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Livre",
+      "item": [
+        {
+          "name": "Create Livre",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titre\": \"Spring Boot\",\n  \"pages\": 250,\n  \"datePublication\": \"2024-01-01\",\n  \"auteur\": { \"id\": 1 },\n  \"categorie\": { \"id\": 1 },\n  \"editeur\": { \"id\": 1 }\n}"
+            },
+            "url": "http://localhost:8080/Livre"
+          }
+        },
+        {
+          "name": "Get Livres",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/Livre"
+          }
+        }
+      ]
+    }
+  ]
+}
